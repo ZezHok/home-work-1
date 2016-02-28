@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/addressbook-web-test/addressbook-web-test.iml" filepath="$PROJECT_DIR$/addressbook-web-test/addressbook-web-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/sandbox/sandbox.iml" filepath="$PROJECT_DIR$/sandbox/sandbox.iml" />
     </modules>
   </component>
