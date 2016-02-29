@@ -1,4 +1,4 @@
-package ru.stqa.homework.addressbook;
+package ru.stqa.homework.addressbook.test;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;

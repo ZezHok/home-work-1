@@ -1,4 +1,4 @@
-package ru.stqa.homework.addressbook;
+package ru.stqa.homework.addressbook.model;
 
 public class ContactData {
   private final String firstName;
