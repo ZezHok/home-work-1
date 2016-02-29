@@ -10,7 +10,7 @@ import ru.stqa.homework.addressbook.model.ContactData;
 /**
  * Created by Yulia on 29.02.2016.
  */
-public class TestBase  extends ApplicationManager {
+public class TestBase {
 
   protected final ApplicationManager app = new ApplicationManager();FirefoxDriver wd;
 
