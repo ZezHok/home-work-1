@@ -1,7 +1,10 @@
 package ru.stqa.homework.addressbook.test;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.homework.addressbook.model.ContactData;
+
+import java.util.List;
 
 /**
  * Created by Yulia on 02.03.2016.
@@ -16,10 +19,12 @@ public class ContactModificationTest extends TestBase {
       app.getContactHelper().createContact(new ContactData("Test", null, null, null, null, "test1"),true);
       app.getNavigationHelper().gotoHomePage();
     }
-    app.getContactHelper().editContact();
+    List<ContactData> before = app.getContactHelper().getContactList();
+    app.getContactHelper().editContact(0);
     app.getContactHelper().fillContactForm(new ContactData("Test", null, null, "89030000000", null, null), false);
     app.getContactHelper().submitContactModificatio();
     app.getNavigationHelper().gotoHomePage();
-
+    List<ContactData> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size());
   }
 }
