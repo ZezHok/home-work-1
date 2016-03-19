@@ -18,7 +18,7 @@ public class ContactModificationTest extends TestBase {
     app.goTo().HomePage();
     if (app.contact().list().size() == 0) {
       app.goTo().AddNewContactPage();
-      app.contact().create(new ContactData("Test", null, "Test", null, null, null), true);
+      app.contact().create(new ContactData().withFirstName("Test").withLastName("Test"), true);
       app.goTo().HomePage();
     }
   }
@@ -27,7 +27,7 @@ public class ContactModificationTest extends TestBase {
   public void testContactModification() {
     List<ContactData> before = app.contact().list();
     int index = 0;
-    ContactData contact = new ContactData(before.get(index).getId(), "Test", null, "Test", null, null, null);
+    ContactData contact = new ContactData().withId(before.get(index).getId()).withFirstName("Test").withLastName("Test");
 
     app.contact().modify(index, contact);
     app.goTo().HomePage();

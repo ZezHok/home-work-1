@@ -15,7 +15,7 @@ public class ContactCreationTest extends TestBase {
     app.goTo().HomePage();
     List<ContactData> before = app.contact().list();
     app.goTo().AddNewContactPage();
-    ContactData contact = new ContactData("Test", null, "Test", null, null, null);
+    ContactData contact = new ContactData().withFirstName("Test").withLastName("Test");
     app.contact().create(contact, true);
     app.goTo().HomePage();
     List<ContactData> after = app.contact().list();

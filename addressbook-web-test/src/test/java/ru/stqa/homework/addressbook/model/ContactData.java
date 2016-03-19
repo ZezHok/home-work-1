@@ -1,76 +1,48 @@
 package ru.stqa.homework.addressbook.model;
 
 public class ContactData {
+
   private int id;
-  private final String firstName;
-  private final String middleName;
-  private final String lastName;
-  private final String mobileNumber;
-  private final String email;
-  private String group;
+  private  String firstName;
+  private  String middleName;
+  private  String lastName;
+  private  String mobileNumber;
+  private  String email;
+  private  String group;
 
-  public ContactData(int id, String firstName, String middleName, String lastName, String mobileNumber, String email, String group) {
-    this.id = id;
+  public ContactData withFirstName(String firstName) {
     this.firstName = firstName;
+    return this;
+  }
+
+  public ContactData withMiddleName(String middleName) {
     this.middleName = middleName;
+    return this;
+  }
+
+  public ContactData withLastName(String lastName) {
     this.lastName = lastName;
+    return this;
+  }
+
+  public ContactData withMobileNumber(String mobileNumber) {
     this.mobileNumber = mobileNumber;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
     this.email = email;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
     this.group = group;
+    return this;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactData that = (ContactData) o;
-
-    if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-    if (middleName != null ? !middleName.equals(that.middleName) : that.middleName != null) return false;
-    if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-    if (mobileNumber != null ? !mobileNumber.equals(that.mobileNumber) : that.mobileNumber != null) return false;
-    if (email != null ? !email.equals(that.email) : that.email != null) return false;
-    return group != null ? group.equals(that.group) : that.group == null;
-
-  }
-
-  @Override
-  public int hashCode() {
-    int result = firstName != null ? firstName.hashCode() : 0;
-    result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
-    result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-    result = 31 * result + (mobileNumber != null ? mobileNumber.hashCode() : 0);
-    result = 31 * result + (email != null ? email.hashCode() : 0);
-    result = 31 * result + (group != null ? group.hashCode() : 0);
-    return result;
-  }
-
-  public ContactData(String firstName, String middleName, String lastName, String mobileNumber, String email, String group) {
-    this.id = 0;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.mobileNumber = mobileNumber;
-    this.email = email;
-    this.group = group;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", firstName='" + firstName + '\'' +
-            ", middleName='" + middleName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", mobileNumber='" + mobileNumber + '\'' +
-            ", email='" + email + '\'' +
-            ", group='" + group + '\'' +
-            '}';
-  }
-
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
   }
 
   public int getId() {
@@ -99,5 +71,45 @@ public class ContactData {
 
   public String getGroup() {
     return group;
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id='" + id + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", middleName='" + middleName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", mobileNumber='" + mobileNumber + '\'' +
+            ", email='" + email + '\'' +
+            ", group='" + group + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+    if (middleName != null ? !middleName.equals(that.middleName) : that.middleName != null) return false;
+    if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+    if (mobileNumber != null ? !mobileNumber.equals(that.mobileNumber) : that.mobileNumber != null) return false;
+    if (email != null ? !email.equals(that.email) : that.email != null) return false;
+    return group != null ? group.equals(that.group) : that.group == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = firstName != null ? firstName.hashCode() : 0;
+    result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
+    result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+    result = 31 * result + (mobileNumber != null ? mobileNumber.hashCode() : 0);
+    result = 31 * result + (email != null ? email.hashCode() : 0);
+    result = 31 * result + (group != null ? group.hashCode() : 0);
+    return result;
   }
 }
