@@ -1,12 +1,13 @@
 package ru.stqa.homework.addressbook.test;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.homework.addressbook.model.GroupData;
+import ru.stqa.homework.addressbook.model.Groups;
 
-import java.util.Comparator;
-import java.util.List;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created by Yulia on 02.03.2016.
@@ -23,20 +24,14 @@ public class GroupModificationTests extends TestBase {
 
   @Test
   public void testGroupModification() {
-    List<GroupData> before = app.group().list();
-    int index = before.size() - 1;
-    GroupData group = new GroupData().withId(before.get(index)
-            .getId()).withName("test1").withHeader("test2").withFooter("test3");
-    app.group().modify(index, group);
-    List<GroupData> after = app.group().list();
-    Assert.assertEquals(after.size(), before.size());
-
-    before.remove(index);
-    before.add(group);
-    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-    before.sort(byId);
-    after.sort(byId);
-    Assert.assertEquals(before, after);
+    Groups before = app.group().all();
+    GroupData modifyGroup = before.iterator().next();
+    GroupData group = new GroupData()
+            .withId(modifyGroup.getId()).withName("test1").withHeader("test2").withFooter("test3");
+    app.group().modify(group);
+    Groups after = app.group().all();
+    assertEquals(after.size(), before.size());
+    assertThat(after, equalTo(before.without(modifyGroup).withAdded(group)));
   }
 
 

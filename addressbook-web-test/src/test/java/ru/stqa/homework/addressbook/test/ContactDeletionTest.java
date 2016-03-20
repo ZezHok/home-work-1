@@ -1,11 +1,13 @@
 package ru.stqa.homework.addressbook.test;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.homework.addressbook.model.ContactData;
+import ru.stqa.homework.addressbook.model.Contacts;
 
-import java.util.List;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class ContactDeletionTest extends TestBase {
 
@@ -21,16 +23,16 @@ public class ContactDeletionTest extends TestBase {
 
   @Test
   public void testContactDeletion() {
-    List<ContactData> before = app.contact().list();
-    int index = 0;
+    Contacts before = app.contact().all();
+    ContactData deleteContact = before.iterator().next();
 
-    app.contact().delete(index);
+    app.contact().delete(deleteContact);
     app.goTo().HomePage();
-    List<ContactData> after = app.contact().list();
-    Assert.assertEquals(after.size(), before.size() - 1);
+    Contacts after = app.contact().all();
+    assertEquals(after.size(), before.size() -1);
+    assertThat(after, equalTo(before.without(deleteContact)));
 
-    before.remove(index);
-    Assert.assertEquals(before, after);
+
 
   }
 
