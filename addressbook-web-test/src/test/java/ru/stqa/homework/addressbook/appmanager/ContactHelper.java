@@ -64,19 +64,21 @@ public class ContactHelper extends HelperBase {
 
     fillContactForm(new ContactData().withFirstName("Test").withLastName("Test").withGroup("test1"), true);
     submitContactCreation();
+    contactCashe = null;
   }
 
   public void modify(ContactData contact) {
     editContactById(contact.getId());
     fillContactForm(contact, false);
     submitContactModificatio();
+    contactCashe = null;
   }
 
   public boolean isThisAContact() {
     return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
-  public int getContactCount() {
+  public int count() {
     return wd.findElements(By.name("entry")).size();
   }
 
@@ -93,28 +95,27 @@ public class ContactHelper extends HelperBase {
     return contacts;
   }
 
-  public void delete(int index) {
-    editContact(index);
-    deleteContact();
-  }
-
-  public void delete(ContactData contact) {
+   public void delete(ContactData contact) {
     editContactById(contact.getId());
     deleteContact();
+     contactCashe = null;
   }
 
+   private Contacts contactCashe = null;
+
   public Contacts all() {
-    Contacts contacts = new Contacts();
+    if (contactCashe != null) {
+      return new Contacts(contactCashe);
+    }
+    contactCashe = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       String name = element.findElement(By.xpath("./td[3]")).getText();
       String lastname = element.findElement(By.xpath("./td[2]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-      ContactData contact = new ContactData().withId(id).withFirstName(name).withLastName(lastname);
-      contacts.add(contact);
+      contactCashe.add(new ContactData().withId(id).withFirstName(name).withLastName(lastname));
     }
-    return contacts;
+    return new Contacts(contactCashe);
   }
-
 }
 
