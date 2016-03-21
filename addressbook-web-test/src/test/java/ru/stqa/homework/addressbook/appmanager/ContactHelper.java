@@ -9,9 +9,7 @@ import ru.stqa.homework.addressbook.model.ContactData;
 import ru.stqa.homework.addressbook.model.Contacts;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Yulia on 01.03.2016.
@@ -31,8 +29,11 @@ public class ContactHelper extends HelperBase {
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("middlename"), contactData.getMiddleName());
     type(By.name("lastname"), contactData.getLastName());
-    type(By.name("mobile"), contactData.getMobileNumber());
     type(By.name("email"), contactData.getEmail());
+    type(By.name("home"), contactData.getHomePhone());
+    type(By.name("mobile"), contactData.getMobilePhone());
+    type(By.name("work"), contactData.getWorkPhone());
+
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -111,11 +112,32 @@ public class ContactHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       String name = element.findElement(By.xpath("./td[3]")).getText();
-      String lastname = element.findElement(By.xpath("./td[2]")).getText();
+      String lastName = element.findElement(By.xpath("./td[2]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-      contactCashe.add(new ContactData().withId(id).withFirstName(name).withLastName(lastname));
-    }
+      String allPhones = element.findElement(By.xpath("./td[6]")).getText(); //берем инфу из ячейки телефон
+      contactCashe.add(new ContactData().withId(id).withFirstName(name).withLastName(lastName).withAllPhones(allPhones));
+              }
     return new Contacts(contactCashe);
   }
+
+  public ContactData infoFromEditForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withFirstName(firstname).withLastName(lastName)
+            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+  }
+
+  private void initContactModificationById(int id){ //кликаем на карандашек для редактирвоания
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    cells.get(7).findElement(By.tagName("a")).click();
+  }
+
 }
 
