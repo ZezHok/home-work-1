@@ -6,108 +6,111 @@ public class ContactData {
   private  String firstName;
   private  String middleName;
   private  String lastName;
-  private  String mobilePhone;
-  private  String email;
   private  String group;
+  private  String mobilePhone;
   private  String homePhone;
   private  String workPhone;
   private  String allPhones;
+  private  String address;
+  private  String email;
+
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
+  }
+  public int getId() {
+    return id;
+  }
 
   public ContactData withFirstName(String firstName) {
     this.firstName = firstName;
     return this;
+  }
+  public String getFirstName() {
+    return firstName;
   }
 
   public ContactData withMiddleName(String middleName) {
     this.middleName = middleName;
     return this;
   }
+  public String getMiddleName() {
+    return middleName;
+  }
 
   public ContactData withLastName(String lastName) {
     this.lastName = lastName;
     return this;
   }
-
-  public String getAllPhones() {
-    return allPhones;
-  }
-
-
-
-  public ContactData withAllPhones (String allPhones) {
-    this.allPhones = allPhones;
-    return this;
-  }
-
-  public ContactData withMobilePhone(String mobilePhone) {
-    this.mobilePhone = mobilePhone;
-    return this;
-  }
-
-  public ContactData withEmail(String email) {
-    this.email = email;
-    return this;
+  public String getLastName() {
+    return lastName;
   }
 
   public ContactData withGroup(String group) {
     this.group = group;
     return this;
   }
+  public String getGroup() {
+    return group;
+  }
 
-  public ContactData withId(int id) {
-    this.id = id;
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
     return this;
+  }
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
+  }
+  public String getWorkPhone() {
+    return workPhone;
   }
 
   public ContactData withHomePhone(String homePhone) {
     this.homePhone = homePhone;
     return this;
   }
-
   public String getHomePhone() {
     return homePhone;
   }
 
-
-
-  public String getWorkPhone() {
-    return workPhone;
-  }
-
-  public ContactData withWorkPhone(String workPhone) {
-     this.workPhone = workPhone;
+  public ContactData withAllPhones (String allPhones) {
+    this.allPhones = allPhones;
     return this;
   }
-
-
-
-  public int getId() {
-    return id;
+  public String getAllPhones() {
+    return allPhones;
   }
 
-  public String getFirstName() {
-    return firstName;
+  public ContactData withAddress (String address) {
+    this.address = address;
+    return this;
+  }
+  public String getAddress() {
+    return address;
   }
 
-  public String getMiddleName() {
-    return middleName;
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
   }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public String getMobilePhone() {
-    return mobilePhone;
-  }
-
   public String getEmail() {
     return email;
   }
 
-  public String getGroup() {
-    return group;
-  }
+
+
+
+
+
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
