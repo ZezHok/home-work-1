@@ -126,15 +126,21 @@ public class ContactHelper extends HelperBase {
   public ContactData infoFromEditForm(ContactData contact) {
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String middleName = wd.findElement(By.name("middlename")).getAttribute("value");
     String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+    String nickname = wd.findElement(By.name("nickname")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
     String address = wd.findElement(By.name("address")).getAttribute("value");
     String email = wd.findElement(By.name("email")).getAttribute("value");
+    String emailTwo = wd.findElement(By.name("email2")).getAttribute("value");
+    String emailThree = wd.findElement(By.name("email3")).getAttribute("value");
+
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withFirstName(firstname).withLastName(lastName)
-            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withAddress(address).withEmail(email);
+    return new ContactData().withId(contact.getId()).withFirstName(firstname).withMiddleName(middleName).withLastName(lastName)
+            .withNickname(nickname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withAddress(address).withEmail(email)
+            .withEmailTwo(emailTwo).withEmailThree(emailThree);
   }
 
   private void initContactModificationById(int id){ //кликаем на карандашек для редактирвоания
@@ -143,6 +149,16 @@ public class ContactHelper extends HelperBase {
     List<WebElement> cells = row.findElements(By.tagName("td"));
     cells.get(7).findElement(By.tagName("a")).click();
   }
+
+  public void clickInfoContactById(int id) {
+            click(By.cssSelector(String.format("a[href='view.php?id=%s']", id)));
+       }
+
+  public WebElement infoFromDetailsForm(ContactData contact) {
+            clickInfoContactById(contact.getId());
+            WebElement element = wd.findElement(By.xpath(".//*[@id='content']"));
+           return element;
+       }
 
 }
 

@@ -13,6 +13,10 @@ public class ContactData {
   private  String allPhones;
   private  String address;
   private  String email;
+  private  String nickname;
+  private  String emailTwo;
+  private  String emailThree;
+
 
   public ContactData withId(int id) {
     this.id = id;
@@ -102,9 +106,29 @@ public class ContactData {
     return email;
   }
 
+  public ContactData withNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+  public String getNickname() {
+    return nickname;
+  }
 
+  public ContactData withEmailTwo(String emailTwo) {
+    this.emailTwo = emailTwo;
+    return this;
+  }
+  public String getEmailTwo() {
+    return emailTwo;
+  }
 
-
+  public ContactData withEmailThree(String emailThree) {
+    this.emailThree = emailThree;
+    return this;
+  }
+  public String getEmailThree() {
+    return emailThree;
+  }
 
 
 
