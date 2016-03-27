@@ -1,7 +1,13 @@
 package ru.stqa.homework.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+import java.io.File;
+@XStreamAlias("contact")
 public class ContactData {
 
+  @XStreamOmitField
   private int id;
   private  String firstName;
   private  String middleName;
@@ -16,6 +22,7 @@ public class ContactData {
   private  String nickname;
   private  String emailTwo;
   private  String emailThree;
+  private  File photo;
 
 
   public ContactData withId(int id) {
@@ -130,10 +137,13 @@ public class ContactData {
     return emailThree;
   }
 
-
-
-
-
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
+  public File getPhoto() {
+    return photo;
+  }
 
 
   @Override

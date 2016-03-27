@@ -1,0 +1,32 @@
+<list>
+  <ru.stqa.homework.addressbook.model.ContactData>
+    <id>0</id>
+    <firstName>test 0</firstName>
+    <middleName>MiddleName 0</middleName>
+    <lastName>LastName 0</lastName>
+  </ru.stqa.homework.addressbook.model.ContactData>
+  <ru.stqa.homework.addressbook.model.ContactData>
+    <id>0</id>
+    <firstName>test 1</firstName>
+    <middleName>MiddleName 1</middleName>
+    <lastName>LastName 1</lastName>
+  </ru.stqa.homework.addressbook.model.ContactData>
+  <ru.stqa.homework.addressbook.model.ContactData>
+    <id>0</id>
+    <firstName>test 2</firstName>
+    <middleName>MiddleName 2</middleName>
+    <lastName>LastName 2</lastName>
+  </ru.stqa.homework.addressbook.model.ContactData>
+  <ru.stqa.homework.addressbook.model.ContactData>
+    <id>0</id>
+    <firstName>test 3</firstName>
+    <middleName>MiddleName 3</middleName>
+    <lastName>LastName 3</lastName>
+  </ru.stqa.homework.addressbook.model.ContactData>
+  <ru.stqa.homework.addressbook.model.ContactData>
+    <id>0</id>
+    <firstName>test 4</firstName>
+    <middleName>MiddleName 4</middleName>
+    <lastName>LastName 4</lastName>
+  </ru.stqa.homework.addressbook.model.ContactData>
+</list>

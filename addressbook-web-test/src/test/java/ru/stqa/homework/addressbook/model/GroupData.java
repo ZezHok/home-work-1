@@ -1,7 +1,13 @@
 package ru.stqa.homework.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("group") // анотация того что сохраним в файл формата xml
+
 public class GroupData {
 
+  @XStreamOmitField // анотация того что сохраним в файл формата xml
   private int id = Integer.MAX_VALUE;
   private  String name;
   private  String header;
