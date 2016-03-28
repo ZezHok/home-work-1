@@ -1,3 +1,5 @@
+import com.thoughtworks.xstream.core.JVM
+
 apply plugin: 'java'
 
 repositories {
@@ -11,4 +13,28 @@ dependencies {
     compile 'com.beust:jcommander:1.48'
     compile 'com.thoughtworks.xstream:xstream:1.4.9'
     compile 'com.google.code.gson:gson:2.6.2'
+}
+
+task testGroups (type: Test) {
+    useTestNG{
+        suites 'src/test/resources/testng-group.xml'
+    }
+    if (project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')){
+        systemProperty 'target', "${target}"
+    }
+}
+
+task testContacts (type: Test) {
+    useTestNG{
+        suites 'src/test/resources/testng-contact.xml'
+    }
+    if (project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')){
+        systemProperty 'target', "${target}"
+    }
 }
