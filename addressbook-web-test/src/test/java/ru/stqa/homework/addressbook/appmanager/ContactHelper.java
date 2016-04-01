@@ -26,20 +26,37 @@ public class ContactHelper extends HelperBase {
   }
 
   public void fillContactForm(ContactData contactData, boolean creation) {
-    type(By.name("firstname"), contactData.getFirstName());
-    type(By.name("middlename"), contactData.getMiddleName());
-    type(By.name("lastname"), contactData.getLastName());
-    type(By.name("email"), contactData.getEmail());
-    type(By.name("home"), contactData.getHomePhone());
-    type(By.name("mobile"), contactData.getMobilePhone());
-    type(By.name("work"), contactData.getWorkPhone());
-    attach(By.name("photo"), contactData.getPhoto());
+    if(contactData.getFirstName() != null){
+              type(By.name("firstname"), contactData.getFirstName());}
+            if(contactData.getMiddleName() != null){
+              type(By.name("middlename"), contactData.getMiddleName());}
+            if(contactData.getLastName() != null){
+              type(By.name("lastname"), contactData.getLastName());}
+            if(contactData.getNickname() != null){
+             type(By.name("nickname"), contactData.getNickname());}
+            if(contactData.getPhoto() != null){
+              attach(By.name("photo"), contactData.getPhoto());}
+            if(contactData.getAddress() != null){
+              type(By.name("address"), contactData.getAddress());}
+           if(contactData.getHomePhone() != null){
+             type(By.name("home"), contactData.getHomePhone());}
+            if(contactData.getMobilePhone() != null){
+             type(By.name("mobile"), contactData.getMobilePhone());}
+            if(contactData.getWorkPhone() != null){
+              type(By.name("work"), contactData.getWorkPhone());}
+            if(contactData.getEmail() != null){
+              type(By.name("email"), contactData.getEmail());}
+            if(contactData.getEmailTwo() != null){
+              type(By.name("email2"), contactData.getEmailTwo());}
+           if(contactData.getEmailThree() != null){
+              type(By.name("email3"), contactData.getEmailThree());}
 
-
-    if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    } else {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
+                    if(contactData.getGroup() != null) {
+                  if (creation) {
+                        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+                    } else {
+                        Assert.assertFalse(isElementPresent(By.name("new_group")));
+                    }
     }
   }
 
@@ -64,7 +81,7 @@ public class ContactHelper extends HelperBase {
 
   public void create(ContactData contactData, boolean b) {
 
-    fillContactForm(new ContactData().withFirstName("Test").withLastName("Test").withGroup("test1"), true);
+    fillContactForm(contactData, false);
     submitContactCreation();
     contactCashe = null;
   }
