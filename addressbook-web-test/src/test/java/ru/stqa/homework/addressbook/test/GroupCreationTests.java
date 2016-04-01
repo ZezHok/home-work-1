@@ -17,8 +17,12 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GroupCreationTests extends TestBase {
+
+
 
   @DataProvider
   public Iterator<Object[]> validGroupsXml() throws IOException {
@@ -60,7 +64,7 @@ public class GroupCreationTests extends TestBase {
     Groups after = app.group().all();
     assertThat(after, equalTo(
             before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
-  }
+      }
 
 
   @Test (enabled = false)
