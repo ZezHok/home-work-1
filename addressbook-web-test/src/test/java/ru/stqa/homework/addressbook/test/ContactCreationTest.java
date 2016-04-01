@@ -38,14 +38,14 @@ public class ContactCreationTest extends TestBase {
   @Test (dataProvider = "validContacts")
   public void testContactCreation( ContactData contact) {
     app.goTo().HomePage();
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     app.goTo().AddNewContactPage();
     //File photo = new File("src/test/resources/stru.pnj");
     //ContactData contact = new ContactData().withFirstName("Test").withLastName("Test").withGroup("test1").withPhoto(photo);
     app.contact().create(contact, true);
     app.goTo().HomePage();
     assertThat(app.contact().count(), equalTo(before.size() + 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
         assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 

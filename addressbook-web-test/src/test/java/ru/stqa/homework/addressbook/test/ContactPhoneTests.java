@@ -18,7 +18,7 @@ public class ContactPhoneTests extends TestBase {
   @BeforeMethod
   public  void ensurePreconditions() {
     app.goTo().HomePage();
-    if (app.contact().list().size() == 0) {
+    if (app.db().contacts().size() == 0) {
       app.goTo().AddNewContactPage();
       app.contact().create(new ContactData().withFirstName("Test").withLastName("Test")
               .withMobilePhone("111").withWorkPhone("222"), true);
@@ -28,7 +28,7 @@ public class ContactPhoneTests extends TestBase {
 
   @Test
   public void testContactPhone() {
-     ContactData contact = app.contact().all().iterator().next(); // загружаем множество контактов
+     ContactData contact = app.db().contacts().iterator().next(); // загружаем множество контактов
      ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact); // выбираем контакт случайным образом
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));  //contact.getAllPhones() загружаем телефоны с главной страницы
   }

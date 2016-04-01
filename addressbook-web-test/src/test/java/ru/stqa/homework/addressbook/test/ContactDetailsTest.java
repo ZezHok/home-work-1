@@ -19,7 +19,7 @@ public class ContactDetailsTest extends TestBase {
   @BeforeMethod
   public  void ensurePreconditions() {
     app.goTo().HomePage();
-    if (app.contact().list().size() == 0) {
+    if (app.db().contacts().size() == 0) {
       app.goTo().AddNewContactPage();
       app.contact().create(new ContactData().withFirstName("Test").withLastName("Test").withAddress("Street").withEmail("test@mail.ru"), true);
       app.goTo().HomePage();
@@ -28,7 +28,7 @@ public class ContactDetailsTest extends TestBase {
 
   @Test
   public void testContactDetails(){
-    ContactData contact = app.contact().all().iterator().next();
+    ContactData contact = app.db().contacts().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     WebElement contactInfo = app.contact().infoFromDetailsForm(contact);
     String contactInf = cleaned(contactInfo);
@@ -46,8 +46,7 @@ public class ContactDetailsTest extends TestBase {
   }
 
   private String cleaned(WebElement contactInfo){
-    String contact = contactInfo.getText().replaceAll("[-()]", "").replace("www.mail.ru", "").replace("H:", "")
-            .replace("M:", "").replace("W:", "").replace(" ", "").replace("\n", "").replace(" ", "");
+    String contact = contactInfo.getText().replaceAll("www.mail.ru|H:|M:|W:|Member of.*|\n| |\\(|\\)", "");
     return contact;
   }
 
