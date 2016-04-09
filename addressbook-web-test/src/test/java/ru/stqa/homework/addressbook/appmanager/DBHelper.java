@@ -9,10 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import ru.stqa.homework.addressbook.model.ContactData;
-import ru.stqa.homework.addressbook.model.Contacts;
-import ru.stqa.homework.addressbook.model.GroupData;
-import ru.stqa.homework.addressbook.model.Groups;
+import ru.stqa.homework.addressbook.model.*;
 
 import java.util.List;
 
@@ -47,5 +44,16 @@ public class DBHelper {
       return new Contacts(result);
     }
 
+  public ContactsAndGroups contactsGroups(){
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<ContactsGroupsData> result = session.createQuery("from ContactsGroupsData").list();
+    for ( ContactsGroupsData contactsGroup: result ) {
+      System.out.println(contactsGroup);
+    }
+    session.getTransaction().commit();
+    session.close();
+    return new ContactsAndGroups(result);
+  }
   }
 
