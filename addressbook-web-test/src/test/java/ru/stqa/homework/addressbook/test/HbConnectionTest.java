@@ -42,6 +42,7 @@ public class HbConnectionTest {
       List<ContactData> result = session.createQuery( "from ContactData where deprecated = '0000-00-00'" ).list(); // where deprecated = '0000-00-00' выводим только те контакты которые присутствуют на нашей странице
      for ( ContactData contact : result ) {
         System.out.println(contact);
+        System.out.println(contact.getGroups());
       }
       session.getTransaction().commit();
       session.close();

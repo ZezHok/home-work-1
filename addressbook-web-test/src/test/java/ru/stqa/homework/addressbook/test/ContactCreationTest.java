@@ -34,22 +34,24 @@ public class ContactCreationTest extends TestBase {
     List<ContactData> contacts = (List<ContactData>) xstream.fromXML(xml);
     return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
   }
-
+  /*
+// реализовать предусловия
   @Test (dataProvider = "validContacts")
   public void testContactCreation( ContactData contact) {
     app.goTo().HomePage();
     Contacts before = app.db().contacts();
     app.goTo().AddNewContactPage();
-    //File photo = new File("src/test/resources/stru.pnj");
-    //ContactData contact = new ContactData().withFirstName("Test").withLastName("Test").withGroup("test1").withPhoto(photo);
+    File photo = new File("src/test/resources/stru.pnj");
+    ContactData newContact = new ContactData().withFirstName("Test").withLastName("Test").withPhoto(photo).inGroup(groups.itterator().next());
     app.contact().create(contact, true);
     app.goTo().HomePage();
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.db().contacts();
         assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+    verifyContactListInUI();
 
   }
 
-
+*/
 }

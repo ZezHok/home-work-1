@@ -30,6 +30,7 @@ public class ContactAddressTests extends TestBase {
     ContactData contact = app.db().contacts().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     assertThat(contact.getAddress(), equalTo(mergeAddress(contactInfoFromEditForm)));
+    verifyContactListInUI();
   }
 
   private String mergeAddress(ContactData contact) {  // выбрасываем ненужные пустые строки и склеиваем строки

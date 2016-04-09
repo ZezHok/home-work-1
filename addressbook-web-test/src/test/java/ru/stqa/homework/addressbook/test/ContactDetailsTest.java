@@ -34,6 +34,7 @@ public class ContactDetailsTest extends TestBase {
     String contactInf = cleaned(contactInfo);
     String contactFromEdit = mergeContactInfo(contactInfoFromEditForm);
     assertThat(contactInf, equalTo(contactFromEdit));
+    verifyContactListInUI();
   }
 
   private String mergeContactInfo(ContactData contact) {
