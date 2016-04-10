@@ -1,4 +1,4 @@
-package ru.stqa.pft.mantis.appmanager;
+package ru.stqa.homework.mantis.appmanager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,10 +16,12 @@ import java.util.concurrent.TimeUnit;
  * Created by Yulia on 29.02.2016.
  */
 public class ApplicationManager {
+
   private final Properties properties;
   WebDriver wd;
 
   private String browser;
+  private HttpSession httpSession;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -44,6 +46,14 @@ public class ApplicationManager {
 
   public void stop() {
     wd.quit();
+  }
+
+  public HttpSession newSession() {
+    return new HttpSession(this);
+  }
+
+  public String getProperty(String key) {
+    return properties.getProperty(key);
   }
 
 }

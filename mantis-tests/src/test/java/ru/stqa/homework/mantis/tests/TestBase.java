@@ -1,4 +1,5 @@
-package ru.stqa.pft.mantis.tests;
+package ru.stqa.homework.mantis.tests;
+
 
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterSuite;
@@ -9,6 +10,7 @@ import ru.stqa.homework.addressbook.appmanager.ApplicationManager;
  * Created by Yulia on 29.02.2016.
  */
 public class TestBase {
+
 
   protected static final ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
 
