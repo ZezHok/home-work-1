@@ -4,7 +4,7 @@ package ru.stqa.homework.mantis.tests;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import ru.stqa.homework.addressbook.appmanager.ApplicationManager;
+import ru.stqa.homework.mantis.appmanager.ApplicationManager;
 
 /**
  * Created by Yulia on 29.02.2016.
