@@ -1,4 +1,4 @@
-package ru.stqa.homework.addressbook.appmanager;
+package ru.stqa.homework.mantis.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -8,13 +8,16 @@ import org.openqa.selenium.WebDriver;
 import java.io.File;
 
 /**
- * Created by Yulia on 01.03.2016.
+ * Created by Yulia on 10.04.2016.
  */
 public class HelperBase {
+
+  protected ApplicationManager app;
   protected WebDriver wd;
 
-  public HelperBase(WebDriver wd) {
-    this.wd = wd;
+  public HelperBase(ApplicationManager app) {
+    this.app = app;
+    this.wd = app.getDriver();
   }
 
   protected void click(By locator) {
@@ -29,6 +32,12 @@ public class HelperBase {
         wd.findElement(locator).clear();
         wd.findElement(locator).sendKeys(text);
       }
+    }
+  }
+
+  protected void attach(By locator, File file) {
+    if (file != null) {
+      wd.findElement(locator).sendKeys(file.getAbsolutePath());
     }
   }
 
@@ -49,11 +58,4 @@ public class HelperBase {
       return false;
     }
   }
-
-  protected void attach(By locator, File file) {
-    if (file != null) {
-        wd.findElement(locator).sendKeys(file.getAbsolutePath());
-      }
-    }
-  }
-
+}
