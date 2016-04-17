@@ -24,7 +24,7 @@ public class ChangePasswordTests extends TestBase {
   public void testChangePassword() throws Exception {
     String username = "user";
     String changePassword = "test";
-    app.changePassword().login("Administrator","root");
+    app.changePassword().login("administrator","root");
     app.goTo().Users();
     UserData selectUser = app.db().users().stream().filter((u) -> username.equals(u.getUsername())).iterator().next();
     app.goTo().clickUser(selectUser.getId());

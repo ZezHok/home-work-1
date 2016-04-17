@@ -26,7 +26,8 @@ public class ApplicationManager {
   private MailHelper mailHelper;
   private NavigationHelper navigationHelper;
   private DbHelper dbHelper;
-  private ChangePassword authorization;
+  private ChangePassword changePassword;
+  private SoapHelper soap;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -101,9 +102,16 @@ public class ApplicationManager {
         }
 
   public ChangePassword changePassword() throws Exception {
-    if (authorization == null) {
-      authorization = new ChangePassword(this);
+    if (changePassword == null) {
+      changePassword = new ChangePassword(this);
     }
-    return  authorization;
+    return  changePassword;
+  }
+
+  public SoapHelper soap() {
+    if (soap == null) {
+      soap = new SoapHelper(this);
+    }
+    return  soap;
   }
 }
