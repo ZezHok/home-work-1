@@ -27,7 +27,7 @@ public class ContactAddGroup extends TestBase{
 
   }
 
-  @Test
+  @Test (enabled = false)
   public void testContactAddGroup()  {
     Contacts contacts =  app.db().contacts();
     Groups groups =  app.db().groups();

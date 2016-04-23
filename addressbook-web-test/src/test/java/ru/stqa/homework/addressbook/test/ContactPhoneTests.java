@@ -26,7 +26,7 @@ public class ContactPhoneTests extends TestBase {
     }
   }
 
-  @Test
+  @Test (enabled = false)
   public void testContactPhone() {
      ContactData contact = app.db().contacts().iterator().next(); // загружаем множество контактов
      ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact); // выбираем контакт случайным образом

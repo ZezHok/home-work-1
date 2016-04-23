@@ -28,7 +28,7 @@ public class ContactDeleteFromGroup  extends TestBase {
 
   }
 
-  @Test
+  @Test (enabled = false)
       public void testContactDeleteFromGroup() {
     Contacts contacts = app.db().contacts();
     Groups groups = app.db().groups();

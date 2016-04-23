@@ -25,7 +25,7 @@ public class ContactsEmailTests extends TestBase {
     }
   }
 
-  @Test
+  @Test (enabled = false)
   public void testContactEmail() {
     ContactData contact = app.db().contacts().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);

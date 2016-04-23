@@ -7,7 +7,6 @@ import ru.stqa.homework.addressbook.model.Contacts;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.AssertJUnit.assertEquals;
 
 public class ContactDeletionTest extends TestBase {
 
@@ -21,7 +20,7 @@ public class ContactDeletionTest extends TestBase {
     }
   }
 
-  @Test
+  @Test (enabled = false)
   public void testContactDeletion() {
     Contacts before = app.db().contacts();
     ContactData deleteContact = before.iterator().next();
